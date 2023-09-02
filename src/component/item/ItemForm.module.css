@@ -1,0 +1,41 @@
+.form {
+    display: flex;
+    align-items: center;
+}
+
+.form input {
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    width: 6rem;
+    margin-right: 1.7rem;
+}
+
+.form input:focus {
+    outline: none;
+}
+
+.form button {
+    background-color: var(--color-primary);
+    border: none;
+    height: 4rem;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+}
+
+.form button:focus {
+    outline: none;
+}
+
+.spinner {
+    padding: .4rem 3rem;
+    position: relative;
+}
+
+.text {
+    padding: 1.2rem 2.5rem;
+}

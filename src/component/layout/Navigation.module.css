@@ -1,0 +1,134 @@
+.nav {
+    max-width: 114rem;
+    margin: 0 auto;
+    padding: 1rem 0;
+    color: #fff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav h1 {
+    font-size: 2.6rem;
+    font-weight: 600;
+}
+
+.nav ul {
+    display: flex;
+    align-items: center;
+
+    list-style: none;
+    margin: 0;
+}
+
+.nav ul a {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav ul li:not(:last-child) {
+    margin-right: 2.5rem;
+}
+
+.nav ul a:hover,
+.nav ul a:active,
+.nav ul a.active {
+    /* 081828 */
+    color: #081828a4;
+    transition: color .5s;
+}
+
+
+
+
+/* -------- icon syling   ------- */
+.menu-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    display: none;
+}
+
+.menu-btn:focus {
+    outline: none;
+}
+
+.menu-btn span {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.menu-icon {
+    height: 3rem;
+    width: 3rem;
+    fill: #fff;
+    margin-right: .6rem;
+}
+
+.user-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.user-btn:focus {
+    outline: none;
+}
+
+.user-btn:not(:last-child) {
+    margin-right: 2rem;
+}
+
+.nav-icon {
+    height: 2.1rem;
+    width: 2.1rem;
+    fill: #fff;
+}
+
+.nav-icon__notification {
+    position: absolute;
+    color: #fff;
+    font-size: 1.4rem;
+    transform: translateY(-7px);
+}
+
+@media only screen and (max-width: 1200px) {
+    .nav {
+        padding: 1rem 2.5rem 1rem 2.3rem;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .nav ul {
+        display: none;
+    }
+
+    .menu-btn {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav .user-icons-box button:not(:last-child),
+    .nav .user-icons-box a {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .nav {
+        padding: 1rem 2.5rem 1rem 1.5rem;
+    }
+
+    .nav h1 {
+        font-size: 3rem;
+    }
+}

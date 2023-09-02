@@ -1,0 +1,119 @@
+.user-details {
+    padding: 3rem 2rem 3rem 3rem;
+}
+
+.form:not(:last-child) {
+    margin-bottom: 5rem;
+}
+
+.form h2 {
+    margin-bottom: 1rem;
+}
+
+.form button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2rem;
+    height: 3.75rem;
+    padding: 1rem 1.5rem;
+    transition: transform 0.4s;
+
+    display: flex;
+    align-items: center;
+}
+
+.form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.form button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.form button:focus {
+    outline: none;
+}
+
+.form:first-child .form-box:first-child {
+    display: grid;
+    grid-column-gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.form-box,
+.form-check {
+    margin-bottom: 1.7rem;
+}
+
+.form-box label {
+    display: block;
+    font-size: 1.4rem;
+    color: #464646;
+    font-weight: 400;
+    margin-bottom: .8rem;
+}
+
+.form-box input {
+    display: block;
+    border: 2px solid rgba(129, 129, 129, 0.2);
+    padding: 0 1.5rem;
+    height: 4.2rem;
+    width: 100%;
+    font-family: inherit;
+    color: #777;
+}
+
+.form-box input:focus {
+    outline: none;
+}
+
+.form-box .error {
+    color: #9d2727;
+    font-size: 1.4rem;
+}
+
+.invalid {
+    border: 1px solid #eb4d4b !important;
+}
+
+.invalidText {
+    color: #eb4d4b;
+    font-size: 1.4rem;
+    font-weight: 400;
+    padding-top: .7rem;
+}
+
+
+.info {
+    color: #777;
+    font-size: 1.4rem;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.createdat span {
+    color: #333;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 1000px) {
+    .form:first-child .form-box:first-child {
+        grid-gap: 2rem;
+        grid-template-columns: 1fr;
+    }
+
+    .user-details {
+        padding: 2rem;
+    }
+}
+
+@media only screen and (max-width: 767px) {}
+
+@media only screen and (max-width: 600px) {}

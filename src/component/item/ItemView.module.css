@@ -1,0 +1,126 @@
+.product-view {
+    margin: 12rem auto 7rem auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 4rem;
+}
+
+.product-view img {
+    width: 100%;
+}
+
+.view-box {
+    padding: 2.5rem 0;
+}
+
+.product-view h2 {
+    font-size: 3rem;
+    color: #2D2A2A;
+    font-weight: 600;
+    margin-bottom: .5rem;
+
+}
+
+.product-view .price {
+    font-size: 2.3rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    margin-bottom: 3rem;
+}
+
+/* -------------------------------- */
+.wishlist-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    margin-top: 2.2rem;
+}
+
+.spinner {
+    position: relative;
+    margin-right: 1.5rem;
+    margin-left: 1rem;
+}
+
+.wishlist-btn:hover svg {
+    fill: var(--color-primary);
+}
+
+.wishlist-btn:hover .span-text {
+    color: var(--color-primary);
+}
+
+.wishlist-icon {
+    height: 2rem;
+    width: 2rem;
+    fill: var(--color-secondary);
+    margin-right: 1.5rem;
+}
+
+.span-text {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+}
+
+@media only screen and (max-width: 1200px) {
+    .product-view {
+        grid-column-gap: 2rem;
+        padding: 2rem;
+    }
+
+    .product-view h2 {
+        font-size: 2.8rem;
+        margin-bottom: .2rem;
+
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .product-view {
+        grid-row-gap: 2rem;
+    }
+
+    .img-box {
+        padding: 3rem;
+        grid-column: 1 / -1;
+    }
+
+    .view-box {
+        grid-column: 1 / -1;
+    }
+
+    .product-view .price {
+        font-size: 1.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .product-view h2 {
+        font-size: 2.5rem;
+        margin-bottom: .2rem;
+
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .img-box {
+        padding: 0;
+    }
+
+    .view-box {
+        padding: 0;
+    }
+
+    .product-view h2 {
+        font-size: 2.3rem;
+        margin-bottom: .2rem;
+    }
+
+    .product-view .price {
+        font-size: 1.8rem;
+    }
+}

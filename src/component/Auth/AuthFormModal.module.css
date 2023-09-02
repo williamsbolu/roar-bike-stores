@@ -1,0 +1,159 @@
+.head {
+    padding: 2rem 1rem 2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(153, 153, 153, 0.355);
+}
+
+.head h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.cancel-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.cancel-btn:focus {
+    outline: none;
+}
+
+.cancel-icon {
+    width: 2.3rem;
+    height: 2.3rem;
+}
+
+/* ---------content ------------- */
+
+.form {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(153, 153, 153, 0.355);
+}
+
+.form-box,
+.form-check {
+    margin-bottom: 2rem;
+}
+
+.form-box label {
+    display: block;
+    font-size: 1.4rem;
+    color: #464646;
+    font-weight: 400;
+    margin-bottom: .8rem;
+}
+
+.form-box input {
+    display: block;
+    border: 2px solid rgba(129, 129, 129, 0.2);
+    padding: 0 1.5rem;
+    height: 4.2rem;
+    width: 100%;
+    font-family: inherit;
+}
+
+.form-box input:focus {
+    outline: none;
+}
+
+.form-box button {
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    width: 100%;
+    cursor: pointer;
+    height: 4.2rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: opacity .2s;
+}
+
+.form-box button:hover {
+    opacity: 0.85;
+}
+
+.invalid {
+    border: 1px solid #eb4d4b !important;
+}
+
+.error-text {
+    width: 100%;
+    /* background-color: #cc3b3b; */
+    background-color: #eb4d4b;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 23px;
+    padding: .6rem 1.2rem;
+    margin-bottom: 1.8rem;
+}
+
+.invalidText {
+    color: #eb4d4b !important;
+    font-size: 1.4rem !important;
+    font-weight: 400;
+    padding-top: .7rem;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.check-box {
+    display: flex;
+    align-items: center;
+}
+
+.form-check label {
+    font-size: 1.4rem;
+    color: #464646;
+    font-weight: 400;
+}
+
+.form-check input {
+    margin-right: 1rem;
+}
+
+.form-check a {
+    color: var(--color-primary);
+    font-size: 1.4rem;
+}
+
+/* ---------create ------------- */
+.create {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(153, 153, 153, 0.355);
+
+}
+
+.create-box {
+    text-align: center;
+}
+
+.user-icon {
+    fill: rgba(135, 135, 135, 0.15);
+    height: 7rem;
+    width: 7rem;
+    margin-bottom: 1rem;
+}
+
+.create p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+.create a {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-primary);
+}

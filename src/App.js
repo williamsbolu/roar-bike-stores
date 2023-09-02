@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, useContext } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import AuthContext from './store/auth-context';
+
+import ScrollToTop from './ScrollToTop';
+import Layout from './component/layout/Layout';
+import LoadingSpinner from './component/UI/LoadingSpinner';
+
+const NotFound = React.lazy(() => import('./pages/NotFound'));
+const Home = React.lazy(() => import('./pages/Home'));
+const RoadBikes = React.lazy(() => import('./pages/RoadBikes'));
+const MountainBikes = React.lazy(() => import('./pages/MountainBikes'));
+const FoldingBikes = React.lazy(() => import('./pages/FoldingBikes'));
+const ItemDetail = React.lazy(() => import('./pages/ItemDetail'));
+const AuthPage = React.lazy(() => import('./pages/Auth'));
+const UserProfile = React.lazy(() => import('./component/profile/Profile'));
+const Dashboard = React.lazy(() => import('./component/profile/Dashboard'));
+const AccountSettings = React.lazy(() => import('./component/profile/AccountSettings'));
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const authCtx = useContext(AuthContext);
+
+    console.log(authCtx.userStatus);
+
+    return (
+        <ScrollToTop>
+            <Layout>
+                <Suspense
+                    fallback={
+                        <div className="centered">
+                            <LoadingSpinner />
+                        </div>
+                    }
+                >
+                    <Routes>
+                        <Route path="*" element={<NotFound />} />
+                        <Route path="/" element={<Home />} />
+                        <Route path="/product/:id" element={<ItemDetail />} />
+
+                        <Route path="/shop" element={<Navigate to="/road-bikes" replace />} />
+                        <Route path="/road-bikes" element={<RoadBikes />} />
+                        <Route path="/mountain-bikes" element={<MountainBikes />} />
+                        <Route path="/folding-bikes" element={<FoldingBikes />} />
+
+                        {!authCtx.userStatus.userIsLoggedIn && <Route path="/my-account" element={<AuthPage />} />}
+                        {authCtx.userStatus.userIsLoggedIn && (
+                            <Route path="/my-account" element={<UserProfile />}>
+                                <Route index element={<Dashboard />} />
+                                <Route path="account-settings" element={<AccountSettings />} />
+                            </Route>
+                        )}
+                        {/* {!authCtx.isLoggedIn && <Route path="/my-account/:link" element={<AuthPage />} />} */}
+                    </Routes>
+                </Suspense>
+            </Layout>
+        </ScrollToTop>
+    );
 }
 
 export default App;

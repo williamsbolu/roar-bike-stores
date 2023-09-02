@@ -1,13 +1,171 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-primary: #ff6b81;
+  --color-secondary: #081828;
+
+  --body-text: #888888;
+  --transparent: transparent;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.container {
+  max-width: 114rem;
+  margin: 0 auto;
+}
+
+.section-items {
+  margin: 10rem auto;
+  max-width: 114rem;
+}
+
+.item-head {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link-box {
+  display: flex;
+  align-items: center;
+}
+
+.item-head a {
+  color: var(--body-text);
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-right: .7rem;
+}
+
+.item-head p {
+  color: var(--color-secondary);
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.subject {
+  height: 3.8rem;
+  padding-left: 1rem;
+  border: 1px solid rgba(153, 153, 153, 0.466);
+  font-family: inherit;
+  background: transparent;
+  font-size: 1.5rem;
+  color: #2d2a2a;
+  font-weight: 600;
+}
+
+.subject:focus {
+  outline: none;
+  border: 1px solid #777;
+}
+
+.centered {
+  margin: 0 auto;
+  padding: 25rem 0;
+  max-width: 114rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-centered {
+  margin: 9rem auto 25rem auto;
+  max-width: 114rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered p,
+.item-centered p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #2a2d2d;
+  padding: 2rem 0;
+}
+
+.notfound {
+  padding: 20rem 0;
+}
+
+.notfound h1 {
+  font-size: 5rem;
+  text-align: center;
+  color: #2d2a2a;
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    padding: 0 2.3rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+
+  .centered {
+    text-align: center;
+    padding: 25rem 2rem;
+  }
+
+  .section-items {
+    padding: 0 2rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+
+  .notfound h1 {
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .centered {
+    padding: 30rem 2rem 25rem 2rem;
+  }
+
+  .item-head {
+    padding: 2rem 0;
+  }
+
+  .item-head a {
+    font-size: 1.6rem;
+    margin-right: .5rem;
+  }
+
+  .item-head p {
+    font-size: 1.6rem;
+  }
+
+
+  .notfound {
+    padding: 25rem 2rem;
+  }
+
+  .notfound h1 {
+    font-size: 3rem;
+  }
 }

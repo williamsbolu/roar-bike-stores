@@ -1,0 +1,138 @@
+.profile {
+    margin: 10rem auto;
+    max-width: 120rem;
+
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.head {
+    border-bottom: 1px solid rgba(129, 129, 129, 0.2);
+}
+
+.profile-box {
+    padding: 3rem 2rem 3rem 3rem;
+    color: #777;
+}
+
+.profile-box:first-child {
+    border-right: 1px solid rgba(129, 129, 129, 0.2);
+}
+
+.profile h2 {
+    font-size: 1.8rem;
+    color: #2d2a2a;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.profile ul {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.profile .profile-box:first-child a {
+    color: #000000E6;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 1rem 1.3rem;
+    display: block;
+}
+
+.profile .profile-box:first-child a:hover {
+    background-color: #f6f6f69a;
+}
+
+.profile .profile-box:first-child a.active {
+    background-color: rgba(136, 136, 136, 0.12);
+
+}
+
+.profile-box p {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.profile-box p:first-child {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+.profile-box span {
+    font-weight: 600;
+    color: #777;
+}
+
+.profile-box a {
+    color: var(--color-primary);
+}
+
+/* ------- box-items ------------- */
+.box-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    margin-top: 3rem;
+}
+
+.box-items h3 {
+    font-weight: 600;
+    color: #3f3f3f;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.box {
+    padding: 2rem;
+    border: 1px solid #d0d0d044;
+    text-align: center;
+    box-shadow: 0 0 4px rgb(0 0 0 / 18%);
+    transition: all .5s;
+}
+
+.box:hover {
+    background-color: #f6f6f69a;
+    transition: all .5s;
+}
+
+.box:hover svg {
+    fill: var(--color-primary);
+}
+
+.box-items svg {
+    fill: #d0d0d086;
+    width: 6rem;
+    height: 6rem;
+    transition: all .3s;
+}
+
+@media only screen and (max-width: 1000px) {
+    .profile {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .box-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .profile {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-box:first-child {
+        border-right: none;
+    }
+
+    .profile-box {
+        padding: 2rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .box-items {
+        grid-template-columns: 1fr;
+    }
+}
