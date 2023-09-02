@@ -1,4 +1,5 @@
-export const ROARBIKES_API = 'http://127.0.0.1:3000';
+// export const ROARBIKES_API = 'http://127.0.0.1:3000';
+export const ROARBIKES_API = 'https://roar-bikes-store-api.onrender.com';
 
 export function sleep(time) {
     return new Promise((resolve, reject) => {
