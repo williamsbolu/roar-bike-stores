@@ -20,7 +20,7 @@ const AccountSettings = React.lazy(() => import('./component/profile/AccountSett
 function App() {
     const authCtx = useContext(AuthContext);
 
-    console.log(authCtx.userStatus);
+    // console.log(authCtx.userStatus);
 
     return (
         <ScrollToTop>

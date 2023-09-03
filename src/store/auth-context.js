@@ -84,6 +84,8 @@ export const AuthContextProvider = (props) => {
 
             const data = res.json();
 
+            console.log(data);
+
             // if the user is loggedin from the status received
             if (data.isLoggedIn) loginHandler(data.isLoggedIn, data.user);
         } catch (err) {
