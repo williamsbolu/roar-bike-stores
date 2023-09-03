@@ -82,7 +82,7 @@ export const AuthContextProvider = (props) => {
 
             if (!res.ok) throw new Error('Failed to get user login status!');
 
-            const data = res.json();
+            const data = await res.json();
 
             console.log(data);
 
