@@ -10,7 +10,7 @@ import ItemView from '../component/item/ItemView';
 import Notfound from './NotFound';
 import ItemList from '../component/item/ItemList';
 
-const ProductDetail = () => {
+const ItemDetail = () => {
     const params = useParams();
 
     const { sendRequest, status, data: item, error } = useHttp(getItem, true);
@@ -60,4 +60,4 @@ const ProductDetail = () => {
     );
 };
 
-export default ProductDetail;
+export default ItemDetail;

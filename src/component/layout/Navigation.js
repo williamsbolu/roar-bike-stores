@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import AuthContext from '../../store/auth-context';
 
@@ -7,6 +8,7 @@ import icons from '../../assets/sprite.svg';
 
 const Navigation = (props) => {
     const authCtx = useContext(AuthContext);
+    const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
     const showAuthHandler = (e) => {
         if (!authCtx.userStatus.userIsLoggedIn) {
@@ -72,7 +74,7 @@ const Navigation = (props) => {
                     <svg className={styles['nav-icon']}>
                         <use xlinkHref={`${icons}#icon-shopping-cart`} />
                     </svg>
-                    <span className={styles['nav-icon__notification']}>10</span>
+                    <span className={styles['nav-icon__notification']}>{totalQuantity}</span>
                 </button>
             </div>
         </nav>

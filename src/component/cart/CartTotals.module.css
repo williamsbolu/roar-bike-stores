@@ -1,0 +1,88 @@
+.cart-totals {
+    border: .3rem solid #99999946;
+    flex: 1;
+    align-self: flex-start;
+    padding: 2rem 3rem; 
+
+    margin-top: 4rem;
+}
+
+.cart-totals h1 {
+    color: #2d2a2a;
+    font-size: 2.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+}
+
+.cart-totals h3 {
+    color:  #2d2a2a;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.price {
+    color: #777;
+    font-size: 1.5rem;
+}
+
+.total-box,
+.shipping-box,
+.total {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #77777741;
+    padding: 1rem .8rem;
+}
+
+/* ------------------- */
+
+.cart-totals label {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.cart-totals label span {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.inputwrapper > * {
+    margin-bottom: 1rem;
+}
+
+.shipping-box p {
+    font-size: 1.3rem;
+    color: #333;
+}
+/* -------------------- */
+
+.total {
+    border: none;
+    margin-bottom: 1.5rem;
+}
+
+
+.total h3 {
+    font-size: 1.8rem;
+}
+
+.total .price {
+    font-size: 2.1rem;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* ---------- */
+
+.btn-checkout {
+    background-color: var(--color-primary);
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}

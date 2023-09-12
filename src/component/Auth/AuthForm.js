@@ -28,8 +28,62 @@ const AuthForm = () => {
         enteredPasswordConfirmIsValid: true,
     });
 
+    const loginUser = (user, token) => {
+        authCtx.login(true, user, token);
+
+        setIsLoading(false);
+        navigate('/');
+
+        // incase the user only inputs one name
+        const userName = user.email.split('@')[0];
+        dispatch(
+            appActions.setNotification({
+                status: 'complete',
+                message: `welcome ${userName}`,
+            })
+        );
+    };
+
+    async function exportLocalStoredCarts(user, token) {
+        const storedLocalCarts = JSON.parse(localStorage.getItem('cart'));
+
+        // if there is no local stored data or if its empty
+        if (!storedLocalCarts || storedLocalCarts.items.length === 0) {
+            return loginUser(user, token);
+        }
+
+        const filteredStoredCarts = storedLocalCarts.items.map(function (cart) {
+            return {
+                user: user._id,
+                item: cart.item,
+                price: cart.price,
+                quantity: cart.quantity,
+            };
+        });
+
+        try {
+            const res = await fetch(`${ROARBIKES_API}/api/v1/cart/importLocalCartData`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(filteredStoredCarts),
+            });
+
+            if (!res.ok) throw new Error('Error exporting cart data.');
+
+            loginUser(user, token);
+        } catch (err) {
+            console.log(err.message);
+            loginUser(user, token);
+        }
+        localStorage.removeItem('cart');
+    }
+
     const submitHandler = async (e) => {
         e.preventDefault();
+        setError(null);
 
         // prevent sending multiple request
         if (isLoading) return;
@@ -117,22 +171,12 @@ const AuthForm = () => {
             const resData = await res.json();
             const user = resData.data.user;
 
-            // Login the user
-            authCtx.login(true, user, resData.token);
-
-            const userName = user.email.split('@')[0];
-            dispatch(
-                appActions.setNotification({
-                    status: 'complete',
-                    message: `welcome ${userName}`,
-                })
-            );
-
-            navigate('/');
+            // export the cart data to the server and Login the user
+            exportLocalStoredCarts(user, resData.token);
         } catch (err) {
             setError(err.message);
+            setIsLoading(false);
         }
-        setIsLoading(false);
     };
 
     const switchAuthModeHandler = () => {

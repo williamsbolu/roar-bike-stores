@@ -1,5 +1,5 @@
-// export const ROARBIKES_API = 'http://127.0.0.1:3000';
-export const ROARBIKES_API = 'https://roar-bikes-store-api.onrender.com';
+export const ROARBIKES_API = 'http://127.0.0.1:3000';
+// export const ROARBIKES_API = 'https://roar-bikes-store-api.onrender.com';
 
 export function sleep(time) {
     return new Promise((resolve, reject) => {
@@ -72,3 +72,37 @@ export async function getUserData() {
     const userData = await res.json();
     return userData.data.data;
 }
+
+// export async function exportLocalStoredCarts(userId, token) {
+//     const storedLocalCarts = JSON.parse(localStorage.getItem('cart'));
+
+//     if (!storedLocalCarts || storedLocalCarts.items.length === 0) return; // if there is no local stored data
+
+//     const filteredStoredCarts = storedLocalCarts.items.map(function (cart) {
+//         return {
+//             user: userId,
+//             item: cart.item,
+//             price: cart.price,
+//             quantity: cart.quantity,
+//         };
+//     });
+
+//     try {
+//         const res = await fetch(`${ROARBIKES_API}/api/v1/cart/importLocalCartData`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 Authorization: `Bearer ${token}`,
+//             },
+//             body: JSON.stringify(filteredStoredCarts),
+//         });
+
+//         if (!res.ok) throw new Error('Error exporting cart data.');
+
+//         // localStorage.removeItem('cart');
+//     } catch (err) {
+//         console.log(err.message);
+//         return;
+//     }
+//     localStorage.removeItem('cart');
+// }

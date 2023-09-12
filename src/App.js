@@ -11,6 +11,7 @@ const Home = React.lazy(() => import('./pages/Home'));
 const RoadBikes = React.lazy(() => import('./pages/RoadBikes'));
 const MountainBikes = React.lazy(() => import('./pages/MountainBikes'));
 const FoldingBikes = React.lazy(() => import('./pages/FoldingBikes'));
+const Cart = React.lazy(() => import('./pages/CartPage'));
 const ItemDetail = React.lazy(() => import('./pages/ItemDetail'));
 const AuthPage = React.lazy(() => import('./pages/Auth'));
 const UserProfile = React.lazy(() => import('./component/profile/Profile'));
@@ -41,6 +42,7 @@ function App() {
                         <Route path="/road-bikes" element={<RoadBikes />} />
                         <Route path="/mountain-bikes" element={<MountainBikes />} />
                         <Route path="/folding-bikes" element={<FoldingBikes />} />
+                        <Route path="/cart" element={<Cart />} />
 
                         {!authCtx.userStatus.userIsLoggedIn && <Route path="/my-account" element={<AuthPage />} />}
                         {authCtx.userStatus.userIsLoggedIn && (

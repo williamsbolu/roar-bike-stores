@@ -7,6 +7,7 @@ import { ROARBIKES_API } from '../lib/api';
 const AuthContext = React.createContext({
     userStatus: {
         userIsLoggedIn: false,
+        userId: '',
         userToken: '', // delete later
         userName: '',
         userEmail: '',
@@ -22,6 +23,7 @@ export const AuthContextProvider = (props) => {
 
     const [userStatus, setUserStatus] = useState({
         userIsLoggedIn: false,
+        userId: '',
         userToken: '', // delete later
         userName: '',
         userEmail: '',
@@ -31,6 +33,7 @@ export const AuthContextProvider = (props) => {
     const loginHandler = (loggedInStatus, user, token) => {
         setUserStatus({
             userIsLoggedIn: loggedInStatus,
+            userId: user._id,
             userToken: token, // delete later
             userName: user.name,
             userEmail: user.email,
