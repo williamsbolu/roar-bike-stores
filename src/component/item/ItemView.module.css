@@ -6,7 +6,6 @@
     grid-column-gap: 4rem;
 }
 
-
 .item-view img {
     width: 100%;
 }
@@ -17,10 +16,9 @@
 
 .item-view h2 {
     font-size: 3rem;
-    color: #2D2A2A;
+    color: #2d2a2a;
     font-weight: 600;
-    margin-bottom: .5rem;
-
+    margin-bottom: 0.5rem;
 }
 
 .item-view .price {
@@ -123,7 +121,7 @@
     height: 2rem;
     width: 2rem;
     fill: var(--color-secondary);
-    margin-right: 1.5rem;
+    margin-right: 0.8rem;
 }
 
 .span-text {
@@ -139,8 +137,7 @@
 
     .product-view h2 {
         font-size: 2.8rem;
-        margin-bottom: .2rem;
-
+        margin-bottom: 0.2rem;
     }
 }
 
@@ -165,13 +162,11 @@
 
     .product-view h2 {
         font-size: 2.5rem;
-        margin-bottom: .2rem;
-
+        margin-bottom: 0.2rem;
     }
 }
 
 @media only screen and (max-width: 600px) {
-
     .img-box {
         padding: 0;
     }
@@ -182,7 +177,7 @@
 
     .product-view h2 {
         font-size: 2.3rem;
-        margin-bottom: .2rem;
+        margin-bottom: 0.2rem;
     }
 
     .product-view .price {

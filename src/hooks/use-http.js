@@ -51,7 +51,7 @@ const useHttp = (requestFunction, startWithPending = false) => {
             } catch (error) {
                 // console.log(error);
 
-                if (error.statusCode === 400) {
+                if (error.statusCode === 404) {
                     // this is for the getItem api route
                     return dispatch({
                         type: 'INVALID',

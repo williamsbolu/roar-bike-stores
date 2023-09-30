@@ -1,14 +1,22 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import classes from './Cart.module.css';
+import useHttp from '../../hooks/use-http';
 
 import CartTotals from './CartTotals';
 import CartEmpty from './CartEmpty';
 import CartItem from './CartItem';
+import ItemList from '../item/ItemList';
 import CartItemTab from './CartItemTab';
+import { getAllItems } from '../../lib/api';
 
 const Cart = () => {
     const cartItems = useSelector((state) => state.cart.items);
+    const { sendRequest, status, data: items, error } = useHttp(getAllItems, true);
+
+    useEffect(() => {
+        sendRequest('?type=road-bike&limit=4');
+    }, [sendRequest]);
 
     if (cartItems.length === 0) {
         return <CartEmpty />;
@@ -69,19 +77,10 @@ const Cart = () => {
 
                 <CartTotals />
             </section>
-            {/* {status === "pending" && (
-        <div className="centered">
-          <LoadingSpinner />
-        </div>
-      )}
-      {error && (
-        <div className="centered">
-          <p>{error}</p>
-        </div>
-      )}
-      {status === "completed" && !error && (
-        <ProductList products={optionalList} isCollection={"optional"} />
-      )} */}
+
+            <section className="section-items">
+                <ItemList status={status} error={error} items={items} isCollection={'optional'} />
+            </section>
         </Fragment>
     );
 };

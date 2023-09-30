@@ -39,6 +39,7 @@ const ItemList = (props) => {
                             imageCover={item.imageCover}
                             name={item.name}
                             price={item.price}
+                            slug={item.slug}
                         />
                     ))}
                 </div>

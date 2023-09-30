@@ -31,17 +31,29 @@ export async function getRecentTours() {
     return data.data;
 }
 
-export async function getItem(id) {
-    const res = await fetch(`${ROARBIKES_API}/api/v1/items/${id}`);
+// export async function getItem(id) {
+//     const res = await fetch(`${ROARBIKES_API}/api/v1/items/${id}`);
+
+//     if (!res.ok) {
+//         const err = await res.json();
+//         throw { message: err.message, statusCode: err.error.statusCode };
+//     }
+
+//     const data = await res.json();
+
+//     return data.data;
+// }
+
+export async function getItemSlug(slug) {
+    const res = await fetch(`${ROARBIKES_API}/api/v1/items/item/${slug}`);
 
     if (!res.ok) {
         const err = await res.json();
-        throw { message: err.message, statusCode: err.statusCode };
+        throw { message: err.message, statusCode: err.error.statusCode };
     }
 
     const data = await res.json();
-
-    return data.data;
+    return data;
 }
 
 // export async function getUserData(token) {
@@ -73,36 +85,27 @@ export async function getUserData() {
     return userData.data.data;
 }
 
-// export async function exportLocalStoredCarts(userId, token) {
-//     const storedLocalCarts = JSON.parse(localStorage.getItem('cart'));
+export async function exportLocalSavedItems(userId, token) {
+    const storedLocalItems = JSON.parse(localStorage.getItem('savedItems'));
 
-//     if (!storedLocalCarts || storedLocalCarts.items.length === 0) return; // if there is no local stored data
+    if (!storedLocalItems || storedLocalItems.items.length === 0) return;
 
-//     const filteredStoredCarts = storedLocalCarts.items.map(function (cart) {
-//         return {
-//             user: userId,
-//             item: cart.item,
-//             price: cart.price,
-//             quantity: cart.quantity,
-//         };
-//     });
+    const filteredStoredItems = storedLocalItems.items.map((curItem) => {
+        return {
+            name: curItem.item.name,
+            user: userId,
+            item: curItem.item._id, // item mongodb id
+        };
+    });
 
-//     try {
-//         const res = await fetch(`${ROARBIKES_API}/api/v1/cart/importLocalCartData`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 Authorization: `Bearer ${token}`,
-//             },
-//             body: JSON.stringify(filteredStoredCarts),
-//         });
+    const res = await fetch(`${ROARBIKES_API}/api/v1/savedItem/importLocalWishlistData`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(filteredStoredItems),
+    });
 
-//         if (!res.ok) throw new Error('Error exporting cart data.');
-
-//         // localStorage.removeItem('cart');
-//     } catch (err) {
-//         console.log(err.message);
-//         return;
-//     }
-//     localStorage.removeItem('cart');
-// }
+    if (!res.ok) throw new Error('Error exporting user saved data.');
+}

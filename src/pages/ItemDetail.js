@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import useHttp from '../hooks/use-http';
-import { getItem } from '../lib/api';
-import { getAllItems } from '../lib/api';
+import { getAllItems, getItemSlug } from '../lib/api';
 import LoadingSpinner from '../component/UI/LoadingSpinner';
 
 import ItemView from '../component/item/ItemView';
@@ -13,7 +12,7 @@ import ItemList from '../component/item/ItemList';
 const ItemDetail = () => {
     const params = useParams();
 
-    const { sendRequest, status, data: item, error } = useHttp(getItem, true);
+    const { sendRequest, status, data: item, error } = useHttp(getItemSlug, true);
 
     const {
         sendRequest: sendOptionsRequest,
@@ -24,12 +23,12 @@ const ItemDetail = () => {
 
     useEffect(() => {
         // effect for sending the request to the database
-        sendRequest(params.id);
-    }, [sendRequest, params.id]);
+        sendRequest(params.slug);
+    }, [sendRequest, params.slug]);
 
     useEffect(() => {
         sendOptionsRequest('?type=road-bike&limit=4');
-    }, [sendOptionsRequest, params.id]);
+    }, [sendOptionsRequest]);
 
     if (status === 'pending') {
         return (

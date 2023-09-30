@@ -7,6 +7,7 @@ import { appActions } from '../../store/app-slice';
 import { ROARBIKES_API } from '../../lib/api';
 import { useDispatch } from 'react-redux';
 import AuthContext from '../../store/auth-context';
+import { exportLocalSavedItems } from '../../lib/api';
 
 const AuthForm = () => {
     const authCtx = useContext(AuthContext);
@@ -55,7 +56,7 @@ const AuthForm = () => {
         const filteredStoredCarts = storedLocalCarts.items.map(function (cart) {
             return {
                 user: user._id,
-                item: cart.item,
+                item: cart.item._id, // item mongodb id
                 price: cart.price,
                 quantity: cart.quantity,
             };
@@ -73,12 +74,13 @@ const AuthForm = () => {
 
             if (!res.ok) throw new Error('Error exporting cart data.');
 
-            loginUser(user, token);
+            await exportLocalSavedItems(user._id, token);
         } catch (err) {
             console.log(err.message);
-            loginUser(user, token);
         }
+        loginUser(user, token);
         localStorage.removeItem('cart');
+        localStorage.removeItem('savedItems');
     }
 
     const submitHandler = async (e) => {
@@ -171,7 +173,7 @@ const AuthForm = () => {
             const resData = await res.json();
             const user = resData.data.user;
 
-            // export the cart data to the server and Login the user
+            // export the saved cart data to the server and Login the user
             exportLocalStoredCarts(user, resData.token);
         } catch (err) {
             setError(err.message);

@@ -12,6 +12,7 @@ const RoadBikes = React.lazy(() => import('./pages/RoadBikes'));
 const MountainBikes = React.lazy(() => import('./pages/MountainBikes'));
 const FoldingBikes = React.lazy(() => import('./pages/FoldingBikes'));
 const Cart = React.lazy(() => import('./pages/CartPage'));
+const WishList = React.lazy(() => import('./pages/SavedItems'));
 const ItemDetail = React.lazy(() => import('./pages/ItemDetail'));
 const AuthPage = React.lazy(() => import('./pages/Auth'));
 const UserProfile = React.lazy(() => import('./component/profile/Profile'));
@@ -36,13 +37,14 @@ function App() {
                     <Routes>
                         <Route path="*" element={<NotFound />} />
                         <Route path="/" element={<Home />} />
-                        <Route path="/product/:id" element={<ItemDetail />} />
+                        <Route path="/product/:slug" element={<ItemDetail />} />
 
                         <Route path="/shop" element={<Navigate to="/road-bikes" replace />} />
                         <Route path="/road-bikes" element={<RoadBikes />} />
                         <Route path="/mountain-bikes" element={<MountainBikes />} />
                         <Route path="/folding-bikes" element={<FoldingBikes />} />
                         <Route path="/cart" element={<Cart />} />
+                        <Route path="/wishlist" element={<WishList />} />
 
                         {!authCtx.userStatus.userIsLoggedIn && <Route path="/my-account" element={<AuthPage />} />}
                         {authCtx.userStatus.userIsLoggedIn && (
@@ -51,7 +53,7 @@ function App() {
                                 <Route path="account-settings" element={<AccountSettings />} />
                             </Route>
                         )}
-                        {/* {!authCtx.isLoggedIn && <Route path="/my-account/:link" element={<AuthPage />} />} */}
+                        {!authCtx.isLoggedIn && <Route path="/my-account/:link" element={<AuthPage />} />}
                     </Routes>
                 </Suspense>
             </Layout>

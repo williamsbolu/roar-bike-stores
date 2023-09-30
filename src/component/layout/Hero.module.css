@@ -73,6 +73,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .hero {
+        margin-top: 5.7rem;
+    }
 
     .hero-box {
         margin: 0 auto;
@@ -91,7 +94,7 @@
 @media only screen and (max-width: 500px) {
 
     .hero {
-        margin-top: 6.6rem;
+        margin-top: 5.1rem;
     }
 
     .hero h1 {

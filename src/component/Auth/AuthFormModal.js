@@ -1,5 +1,5 @@
 import { useRef, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import classes from './AuthFormModal.module.css';
 
@@ -9,12 +9,14 @@ import ButtonSpinner from '../UI/ButtonSpinner';
 import Modal from '../UI/Modal';
 import icon from '../../assets/sprite.svg';
 import { ROARBIKES_API } from '../../lib/api';
+import { exportLocalSavedItems } from '../../lib/api';
 
 const AuthFormModal = (props) => {
     const authCtx = useContext(AuthContext);
     const dispatch = useDispatch();
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
@@ -29,6 +31,7 @@ const AuthFormModal = (props) => {
 
         setIsLoading(false);
         props.onClose();
+        navigate('/');
 
         // incase the user only inputs one name
         const userName = user.email.split('@')[0];
@@ -52,7 +55,7 @@ const AuthFormModal = (props) => {
         const filteredStoredCarts = storedLocalCarts.items.map(function (cart) {
             return {
                 user: user._id,
-                item: cart.item,
+                item: cart.item._id,
                 price: cart.price,
                 quantity: cart.quantity,
             };
@@ -70,12 +73,13 @@ const AuthFormModal = (props) => {
 
             if (!res.ok) throw new Error('Error exporting cart data.');
 
-            loginUser(user, token);
+            await exportLocalSavedItems(user._id, token);
         } catch (err) {
             console.log(err.message);
-            loginUser(user, token);
         }
+        loginUser(user, token);
         localStorage.removeItem('cart');
+        localStorage.removeItem('savedItems');
     }
 
     const submitHandler = async (e) => {

@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import classes from './Item.module.css';
 import { Link } from 'react-router-dom';
 
 import AuthContext from '../../store/auth-context';
 import ButtonSpinner from '../UI/ButtonSpinner';
 import { cartActions } from '../../store/cart-slice';
+import { wishListActions } from '../../store/wishlist-slice';
 import { ROARBIKES_API } from '../../lib/api';
 import icon from '../../assets/sprite.svg';
 import { sleep } from '../../lib/api';
@@ -14,12 +16,86 @@ import { appActions } from '../../store/app-slice';
 const Item = (props) => {
     const authCtx = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
+    const [isAdding, setIsAdding] = useState(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const notification = useSelector((state) => state.app.notification);
     const cartItems = useSelector((state) => state.cart.items);
+    const wishlistItems = useSelector((state) => state.wishlist.items);
 
-    const { id, imageCover, name, price } = props;
+    const { id, imageCover, name, price, slug } = props;
 
+    const isExistingInWishlist = wishlistItems.find((curitem) => curitem.item._id === id); // compare by the product id
+
+    const addToWishListNoAuthHandler = async () => {
+        await sleep(1000);
+
+        dispatch(
+            wishListActions.addToWishlist({
+                id,
+                imageCover,
+                name,
+                price,
+                slug,
+            })
+        );
+
+        setIsAdding(false);
+    };
+
+    const addToWishListAuthHandler = async () => {
+        try {
+            const res = await fetch(`${ROARBIKES_API}/api/v1/savedItem`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${authCtx.userStatus.userToken}`,
+                },
+                body: JSON.stringify({
+                    name,
+                    item: id,
+                }),
+                // credentials: 'include'
+            });
+
+            if (!res.ok) throw new Error('Error adding product to wishlist.');
+
+            const data = await res.json();
+
+            dispatch(
+                wishListActions.addToWishlist({
+                    wishlistId: data.data.data._id,
+                    userId: authCtx.userStatus.userId, // we can also get d user from the response data
+                    id,
+                    imageCover,
+                    name,
+                    price,
+                    slug,
+                })
+            );
+        } catch (err) {
+            console.error(err.message);
+        }
+        setIsAdding(false);
+    };
+
+    const addToWishListHandler = () => {
+        if (isExistingInWishlist) {
+            return navigate('/wishlist');
+        }
+        if (isAdding) return;
+        setIsAdding(true);
+
+        if (!navigator.onLine) return;
+
+        if (!authCtx.userStatus.userIsLoggedIn) {
+            addToWishListNoAuthHandler();
+        } else {
+            addToWishListAuthHandler();
+        }
+    };
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
     async function addToCartNoAuthHandler() {
         await sleep(1000);
 
@@ -65,6 +141,7 @@ const Item = (props) => {
                     Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify(reqData),
+                // credentials: 'include'
             });
 
             if (!res.ok) throw new Error('Error adding cart data');
@@ -123,28 +200,37 @@ const Item = (props) => {
 
     return (
         <div className={classes.item}>
-            <Link to={`/product/${id}`} className={classes['item__detail']}>
-                <img
-                    src={`${ROARBIKES_API}/img/items/${imageCover}`}
-                    alt={`${name}-img`}
-                    className={classes['item-img']}
-                />
-            </Link>
+            <div className={classes['item-header']}>
+                <Link to={`/product/${slug}`} className={classes['item__detail']}>
+                    <img
+                        src={`${ROARBIKES_API}/img/items/${imageCover}`}
+                        alt={`${name}-img`}
+                        className={classes['item-img']}
+                    />
+                </Link>
+                <button className={classes['item__btn--cart']} onClick={addToCartHandler}>
+                    {!isLoading && (
+                        <svg className={classes['item__icon-cart']}>
+                            <use xlinkHref={`${icon}#icon-shopping-cart`} />
+                        </svg>
+                    )}
+                    {!isLoading && <span className={classes['item__btn--invisible']}>ADD TO CART</span>}
+                    {isLoading && <ButtonSpinner type="white" />}
+                </button>
+            </div>
 
-            <button className={classes['item__btn--heart']}>
-                <svg className={classes['item__icon-heart']}>
-                    <use xlinkHref={`${icon}#icon-heart`} />
-                </svg>
-            </button>
-
-            <button className={classes['item__btn--cart']} onClick={addToCartHandler}>
-                {!isLoading && (
-                    <svg className={classes['item__icon-cart']}>
-                        <use xlinkHref={`${icon}#icon-shopping-cart`} />
+            <button className={classes['item__btn--heart']} onClick={addToWishListHandler}>
+                {!isAdding && !isExistingInWishlist && (
+                    <svg className={classes['item__icon-heart']}>
+                        <use xlinkHref={`${icon}#icon-heart`} />
                     </svg>
                 )}
-                {!isLoading && <span className={classes['item__btn--invisible']}>ADD TO CART</span>}
-                {isLoading && <ButtonSpinner type="white" />}
+                {isAdding && <ButtonSpinner type="dark" />}
+                {!isAdding && isExistingInWishlist && (
+                    <svg className={classes['icon-check']}>
+                        <use xlinkHref={`${icon}#icon-check`} />
+                    </svg>
+                )}
             </button>
 
             <h3 className={classes.detail}>{name}</h3>

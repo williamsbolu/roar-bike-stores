@@ -117,8 +117,19 @@
     padding: 1rem 2rem;
     font-size: 1.5rem;
     text-align: center;
-    color: var(--color-secondary);
+    color: #fff;
     font-weight: 500;
+}
+
+.total a:first-of-type {
+    color: #333333;
+    transition: all .3s;
+    border: 1px solid transparent;
+}
+
+.total a:first-of-type:hover {
+    background: #efefef;
+    border: 1px solid #b5b5b599;
 }
 
 .total a:not(:last-child) {

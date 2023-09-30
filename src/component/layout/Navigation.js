@@ -9,6 +9,7 @@ import icons from '../../assets/sprite.svg';
 const Navigation = (props) => {
     const authCtx = useContext(AuthContext);
     const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+    const wishlistTotals = useSelector((state) => state.wishlist.totalItems);
 
     const showAuthHandler = (e) => {
         if (!authCtx.userStatus.userIsLoggedIn) {
@@ -63,12 +64,12 @@ const Navigation = (props) => {
                     </svg>
                 </Link>
 
-                <button className={styles['user-btn']}>
+                <Link to="/wishlist" className={styles['user-btn']}>
                     <svg className={styles['nav-icon']}>
                         <use xlinkHref={`${icons}#icon-heart`} />
                     </svg>
-                    <span className={styles['nav-icon__notification']}>5</span>
-                </button>
+                    <span className={styles['nav-icon__notification']}>{wishlistTotals}</span>
+                </Link>
 
                 <button className={styles['user-btn']} onClick={props.onShowCart}>
                     <svg className={styles['nav-icon']}>
