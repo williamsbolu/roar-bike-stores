@@ -54,7 +54,6 @@ const AccountDetails = () => {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify({
                     name: enteredName,
@@ -78,7 +77,7 @@ const AccountDetails = () => {
             dispatch(
                 appActions.setNotification({
                     status: 'complete',
-                    message: `User details updated sucessfully.`,
+                    message: `User details updated.`,
                 })
             );
         } catch (err) {
@@ -142,7 +141,7 @@ const AccountDetails = () => {
                                 <p className={classes.invalidText}>Please enter a valid email address.</p>
                             )}
                         </div>
-                        <button>Save changes {updateInProgress && <ButtonFormSpinner />}</button>
+                        <button>{updateInProgress ? <ButtonFormSpinner /> : 'Save changes'}</button>
                     </form>
                     <ChangePasswordForm />
                 </div>

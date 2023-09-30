@@ -8,7 +8,7 @@ import ButtonFormSpinner from '../UI/ButtonFormSpinner';
 import { ROARBIKES_API } from '../../lib/api';
 
 const ChangePasswordForm = () => {
-    const authCtx = useContext(AuthContext);
+    // const authCtx = useContext(AuthContext);
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -53,7 +53,6 @@ const ChangePasswordForm = () => {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify({
                     passwordCurrent: enteredCurrentPassword,
@@ -133,7 +132,7 @@ const ChangePasswordForm = () => {
                 )}
             </div>
             <div className={classes['form-box']}>
-                <button>Change Password {isLoading && <ButtonFormSpinner />}</button>
+                <button>{isLoading ? <ButtonFormSpinner /> : 'Change Password'}</button>
             </div>
         </form>
     );

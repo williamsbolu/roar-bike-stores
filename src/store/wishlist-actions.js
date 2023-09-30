@@ -5,9 +5,6 @@ export const getWishlistData = (token) => {
     return async (dispatch) => {
         try {
             const res = await fetch(`${ROARBIKES_API}/api/v1/savedItem/getUserSavedItems`, {
-                headers: {
-                    // Authorization: `Bearer ${token}`,
-                },
                 credentials: 'include',
             });
 
@@ -22,7 +19,7 @@ export const getWishlistData = (token) => {
                 })
             );
         } catch (err) {
-            console.log(err.message);
+            console.error(err.message);
             return;
         }
     };

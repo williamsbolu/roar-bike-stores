@@ -26,9 +26,6 @@ const WishListItem = (props) => {
         try {
             const res = await fetch(`${ROARBIKES_API}/api/v1/savedItem/${id}`, {
                 method: 'DELETE',
-                // headers: {
-                //     Authorization: `Bearer ${authCtx.userStatus.userToken}`,
-                // },
                 credentials: 'include',
             });
 

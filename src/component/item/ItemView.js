@@ -47,7 +47,6 @@ const ItemView = (props) => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify({
                     item: id,
@@ -135,7 +134,6 @@ const ItemView = (props) => {
                 method: reqMethod,
                 headers: {
                     'Content-Type': 'application/json',
-                    // Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify(reqData),
                 credentials: 'include',

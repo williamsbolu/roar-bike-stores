@@ -102,7 +102,6 @@ export async function exportLocalSavedItems(userId, token) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            // Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(filteredStoredItems),
         credentials: 'include',

@@ -29,8 +29,6 @@ const Layout = (props) => {
     const [showCart, setShowCart] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
 
-    // console.log(cart);
-
     const disableNotificationHandler = () => {
         dispatch(appActions.setNotification(null));
     };

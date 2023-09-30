@@ -18,11 +18,10 @@ const AuthPage = React.lazy(() => import('./pages/Auth'));
 const UserProfile = React.lazy(() => import('./component/profile/Profile'));
 const Dashboard = React.lazy(() => import('./component/profile/Dashboard'));
 const AccountSettings = React.lazy(() => import('./component/profile/AccountSettings'));
+const PageInProgress = React.lazy(() => import('./component/profile/PageInProgress'));
 
 function App() {
     const authCtx = useContext(AuthContext);
-
-    // console.log(authCtx.userStatus);
 
     return (
         <ScrollToTop>
@@ -51,9 +50,16 @@ function App() {
                             <Route path="/my-account" element={<UserProfile />}>
                                 <Route index element={<Dashboard />} />
                                 <Route path="account-settings" element={<AccountSettings />} />
+                                <Route path="wishlist" element={<PageInProgress />} />
+                                <Route path="orders" element={<PageInProgress />} />
+                                <Route path="payment-method" element={<PageInProgress />} />
+                                <Route path="addresses" element={<PageInProgress />} />
+                                <Route path="track-order" element={<PageInProgress />} />
                             </Route>
                         )}
-                        {!authCtx.isLoggedIn && <Route path="/my-account/:link" element={<AuthPage />} />}
+                        {!authCtx.userStatus.userIsLoggedIn && (
+                            <Route path="/my-account/:link" element={<AuthPage />} />
+                        )}
                     </Routes>
                 </Suspense>
             </Layout>

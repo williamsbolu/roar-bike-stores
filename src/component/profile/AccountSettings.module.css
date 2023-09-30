@@ -19,11 +19,12 @@
     text-transform: uppercase;
     font-weight: 700;
     font-size: 1.2rem;
-    height: 3.75rem;
-    padding: 1rem 1.5rem;
+    width: 15rem;
+    height: 4rem;
     transition: transform 0.4s;
 
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -57,7 +58,7 @@
     font-size: 1.4rem;
     color: #464646;
     font-weight: 400;
-    margin-bottom: .8rem;
+    margin-bottom: 0.8rem;
 }
 
 .form-box input {
@@ -87,9 +88,8 @@
     color: #eb4d4b;
     font-size: 1.4rem;
     font-weight: 400;
-    padding-top: .7rem;
+    padding-top: 0.7rem;
 }
-
 
 .info {
     color: #777;
@@ -114,6 +114,8 @@
     }
 }
 
-@media only screen and (max-width: 767px) {}
+@media only screen and (max-width: 767px) {
+}
 
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+}

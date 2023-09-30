@@ -11,7 +11,6 @@ const CartModal = (props) => {
     const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
 
     const formattedCartTotal = cartTotalAmount.toLocaleString();
-    // console.log(cartItems);
 
     return (
         <Modal onClose={props.onClose} content="cart" cartIsEnabled={props.showCart}>

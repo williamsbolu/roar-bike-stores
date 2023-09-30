@@ -45,6 +45,10 @@ export const AuthContextProvider = (props) => {
         try {
             const res = await fetch(`${ROARBIKES_API}/api/v1/users/logout`, {
                 method: 'GET',
+                // headers: {
+                //     'Content-Type': 'application/json',
+                // Authorization: `Bearer ${userStatus.userToken}`,
+                // },
                 credentials: 'include',
             });
 

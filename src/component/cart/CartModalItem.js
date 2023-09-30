@@ -7,6 +7,7 @@ import AuthContext from '../../store/auth-context';
 import cancelIcon from '../../assets/sprite.svg';
 import { Link } from 'react-router-dom';
 import { ROARBIKES_API, sleep } from '../../lib/api';
+import { appActions } from '../../store/app-slice';
 
 const CartModalItem = (props) => {
     const authCtx = useContext(AuthContext);
@@ -19,9 +20,6 @@ const CartModalItem = (props) => {
         try {
             const res = await fetch(`${ROARBIKES_API}/api/v1/cart/${props.id}`, {
                 method: 'DELETE',
-                // headers: {
-                //     Authorization: `Bearer ${authCtx.userStatus.userToken}`,
-                // },
                 credentials: 'include',
             });
 
@@ -29,7 +27,12 @@ const CartModalItem = (props) => {
 
             dispatch(cartActions.removeItemFromCart(props.itemId));
         } catch (err) {
-            console.log(err.message);
+            dispatch(
+                appActions.setNotification({
+                    status: 'error',
+                    message: err.message,
+                })
+            );
         }
 
         setIsloading(false);

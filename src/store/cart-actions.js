@@ -5,9 +5,6 @@ export const getCartData = (token) => {
     return async (dispatch) => {
         try {
             const res = await fetch(`${ROARBIKES_API}/api/v1/cart/getUserCartData`, {
-                // headers: {
-                //     Authorization: `Bearer ${token}`,
-                // },
                 credentials: 'include',
             });
 

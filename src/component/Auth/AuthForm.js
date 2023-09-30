@@ -67,7 +67,6 @@ const AuthForm = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(filteredStoredCarts),
                 credentials: 'include',
@@ -77,7 +76,7 @@ const AuthForm = () => {
 
             await exportLocalSavedItems(user._id, token);
         } catch (err) {
-            console.log(err.message);
+            console.error(err.message);
         }
         loginUser(user, token);
         localStorage.removeItem('cart');

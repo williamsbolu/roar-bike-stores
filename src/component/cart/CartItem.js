@@ -26,9 +26,6 @@ const CartItem = (props) => {
         try {
             const res = await fetch(`${ROARBIKES_API}/api/v1/cart/${id}`, {
                 method: 'DELETE',
-                // headers: {
-                //     Authorization: `Bearer ${authCtx.userStatus.userToken}`,
-                // },
                 credentials: 'include',
             });
 
@@ -79,7 +76,6 @@ const CartItem = (props) => {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify(reqData),
                 credentials: 'include',

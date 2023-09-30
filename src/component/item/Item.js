@@ -49,7 +49,6 @@ const Item = (props) => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify({
                     name,
@@ -138,7 +137,6 @@ const Item = (props) => {
                 method: reqMethod,
                 headers: {
                     'Content-Type': 'application/json',
-                    // Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify(reqData),
                 credentials: 'include',
@@ -147,8 +145,6 @@ const Item = (props) => {
             if (!res.ok) throw new Error('Error adding cart data');
 
             const data = await res.json();
-
-            // console.log(data);
 
             let cartId;
 
