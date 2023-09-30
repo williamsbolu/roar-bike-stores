@@ -1,5 +1,5 @@
-export const ROARBIKES_API = 'http://127.0.0.1:3000';
-// export const ROARBIKES_API = 'https://roar-bikes-store-api.onrender.com';
+// export const ROARBIKES_API = 'http://127.0.0.1:3000';
+export const ROARBIKES_API = 'https://roar-bikes-store-api.onrender.com';
 
 export function sleep(time) {
     return new Promise((resolve, reject) => {
@@ -102,9 +102,10 @@ export async function exportLocalSavedItems(userId, token) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
+            // Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(filteredStoredItems),
+        credentials: 'include',
     });
 
     if (!res.ok) throw new Error('Error exporting user saved data.');

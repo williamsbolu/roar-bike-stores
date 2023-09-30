@@ -66,9 +66,10 @@ const AuthFormModal = (props) => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
+                    // Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(filteredStoredCarts),
+                credentials: 'include',
             });
 
             if (!res.ok) throw new Error('Error exporting cart data.');

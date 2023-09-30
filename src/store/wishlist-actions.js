@@ -6,9 +6,9 @@ export const getWishlistData = (token) => {
         try {
             const res = await fetch(`${ROARBIKES_API}/api/v1/savedItem/getUserSavedItems`, {
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    // Authorization: `Bearer ${token}`,
                 },
-                // credentials: 'include',
+                credentials: 'include',
             });
 
             if (!res.ok) throw new Error('Error getting wishlist data.');

@@ -5,10 +5,10 @@ export const getCartData = (token) => {
     return async (dispatch) => {
         try {
             const res = await fetch(`${ROARBIKES_API}/api/v1/cart/getUserCartData`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-                // credentials: 'include'
+                // headers: {
+                //     Authorization: `Bearer ${token}`,
+                // },
+                credentials: 'include',
             });
 
             if (!res.ok) throw new Error('Error getting cart data');

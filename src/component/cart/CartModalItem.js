@@ -19,10 +19,10 @@ const CartModalItem = (props) => {
         try {
             const res = await fetch(`${ROARBIKES_API}/api/v1/cart/${props.id}`, {
                 method: 'DELETE',
-                headers: {
-                    Authorization: `Bearer ${authCtx.userStatus.userToken}`,
-                },
-                // credentials: 'include',
+                // headers: {
+                //     Authorization: `Bearer ${authCtx.userStatus.userToken}`,
+                // },
+                credentials: 'include',
             });
 
             if (!res.ok) throw new Error('Unable to delete cart data');

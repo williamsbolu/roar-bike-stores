@@ -26,10 +26,10 @@ const WishListItem = (props) => {
         try {
             const res = await fetch(`${ROARBIKES_API}/api/v1/savedItem/${id}`, {
                 method: 'DELETE',
-                headers: {
-                    Authorization: `Bearer ${authCtx.userStatus.userToken}`,
-                },
-                // credentials: 'include',
+                // headers: {
+                //     Authorization: `Bearer ${authCtx.userStatus.userToken}`,
+                // },
+                credentials: 'include',
             });
 
             if (!res.ok) throw new Error('Error removing wishlist data.');
@@ -101,9 +101,10 @@ const WishListItem = (props) => {
                 method: reqMethod,
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${authCtx.userStatus.userToken}`,
+                    // Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify(reqData),
+                credentials: 'include',
             });
 
             if (!res.ok) throw new Error('Error adding cart data');

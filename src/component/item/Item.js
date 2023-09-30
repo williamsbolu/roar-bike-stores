@@ -49,13 +49,13 @@ const Item = (props) => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${authCtx.userStatus.userToken}`,
+                    // Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify({
                     name,
                     item: id,
                 }),
-                // credentials: 'include'
+                credentials: 'include',
             });
 
             if (!res.ok) throw new Error('Error adding product to wishlist.');
@@ -138,10 +138,10 @@ const Item = (props) => {
                 method: reqMethod,
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${authCtx.userStatus.userToken}`,
+                    // Authorization: `Bearer ${authCtx.userStatus.userToken}`,
                 },
                 body: JSON.stringify(reqData),
-                // credentials: 'include'
+                credentials: 'include',
             });
 
             if (!res.ok) throw new Error('Error adding cart data');
