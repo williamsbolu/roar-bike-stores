@@ -14,6 +14,7 @@ import { getWishlistData } from '../../store/wishlist-actions';
 import { cartActions } from '../../store/cart-slice';
 import { appActions } from '../../store/app-slice';
 import { wishListActions } from '../../store/wishlist-slice';
+import MobileNavigation from './MobileNavigation';
 
 let isInitial = true;
 let isLoaded = true;
@@ -149,6 +150,7 @@ const Layout = (props) => {
             <footer>
                 <Footer />
             </footer>
+            <MobileNavigation onShowLogin={switchAuthDisplayHandler} onShowCart={switchCartDisplayHandler} />
         </Fragment>
     );
 };

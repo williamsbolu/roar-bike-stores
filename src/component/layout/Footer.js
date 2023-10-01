@@ -19,10 +19,10 @@ const Footer = () => {
                             <Link to="/my-account/orders">Order</Link>
                         </li>
                         <li>
-                            <Link to="/my-account/account-details">Account</Link>
+                            <Link to="/my-account/account-settings">Account</Link>
                         </li>
                         <li>
-                            <Link to="/my-account/account-details">Change Password</Link>
+                            <Link to="/my-account/account-settings">Change Password</Link>
                         </li>
                     </ul>
                 </div>
@@ -35,7 +35,7 @@ const Footer = () => {
                             <Link to="/my-account">My Account</Link>
                         </li>
                         <li>
-                            <Link to="/my-account/track-order">Track Your Order</Link>
+                            <Link to="/my-account/orders">Track Your Order</Link>
                         </li>
                         <li>
                             <Link to="/my-account/payment-method">Payment Method</Link>

@@ -1,6 +1,7 @@
 .menu-list {
     display: flex;
     flex-direction: column;
+    list-style: none;
 
     /* overflow: auto; */
 }
@@ -28,7 +29,7 @@
 
 .menu-list .menu-item {
     border-bottom: 1px solid rgba(153, 153, 153, 0.355);
-    transition: all .1s;
+    transition: all 0.1s;
 }
 
 .menu-list li.menu-item:hover {
@@ -64,7 +65,7 @@
     height: 2.3rem;
     fill: #555;
 
-    transition: transform .2s;
+    transition: transform 0.2s;
 }
 
 .link-icon {
@@ -89,7 +90,7 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: all .3s;
+    transition: all 0.3s;
 }
 
 .collapsible--expanded .menu-icon {

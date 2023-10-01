@@ -103,7 +103,7 @@ const Menu = (props) => {
                         </li>
                         <li className={classes['menu-item']}>
                             <NavLink
-                                to="/track-order"
+                                to="/my-Account/track-order"
                                 onClick={props.onClose}
                                 className={({ isActive }) => (isActive ? classes.active : '')}
                             >
@@ -112,11 +112,11 @@ const Menu = (props) => {
                         </li>
                         <li className={classes['menu-item']}>
                             <NavLink
-                                to="/returns"
+                                to="/my-Account/account-settings"
                                 onClick={props.onClose}
                                 className={({ isActive }) => (isActive ? classes.active : '')}
                             >
-                                Returns & exchange{' '}
+                                Account Details
                             </NavLink>
                         </li>
                     </ul>
