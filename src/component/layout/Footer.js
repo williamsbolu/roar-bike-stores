@@ -8,7 +8,7 @@ const Footer = () => {
             <div className={classes['footer__main']}>
                 <div className={classes['footer-box']}>
                     <h1>Roar Bikes</h1>
-                    <p className={classes['footer-text']}>Designed and Developed by Williams</p>
+                    {/* <p className={classes['footer-text']}>Designed and Developed by Williams</p> */}
                 </div>
 
                 <div className={classes['footer-box']}>
