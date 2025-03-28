@@ -95,7 +95,7 @@ export async function exportLocalSavedItems(userId, token) {
         return {
             name: curItem.item.name,
             user: userId,
-            item: curItem.item._id, // item mongodb id
+            item: curItem.item._id, // item mongodb id.
         };
     });
 
