@@ -49,6 +49,7 @@ export async function getItemSlug(slug) {
 
     if (!res.ok) {
         const err = await res.json();
+        // eslint-disable-next-line
         throw { message: err.message, statusCode: err.error.statusCode };
     }
 

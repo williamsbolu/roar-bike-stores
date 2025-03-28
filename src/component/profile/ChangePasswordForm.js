@@ -1,8 +1,8 @@
-import { useRef, useContext, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import classes from './AccountSettings.module.css';
 
-import AuthContext from '../../store/auth-context';
+// import AuthContext from '../../store/auth-context';
 import { appActions } from '../../store/app-slice';
 import ButtonFormSpinner from '../UI/ButtonFormSpinner';
 import { ROARBIKES_API } from '../../lib/api';
